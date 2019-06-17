@@ -1,0 +1,2 @@
+DROP DATABASE IF EXISTS terminal;
+DROP USER IF EXISTS terminal_user;
