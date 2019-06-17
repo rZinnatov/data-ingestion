@@ -41,6 +41,9 @@ I would measure:
 
 Unfortunatly, I didn't have enough time to actually measure it.
 
+__Possible question:__ _How could you achieve the best performance (which was the top priority) without measuring it?_
+__Possible answer:__ IMHO, working but slow solution is better than fast but not working, so keeping in mind the top priority, first of all, I wanted to achieve the top of the top priority, which is just working, and actually ran out of time. My main move to achieve the performance goal was to make this solution scalable (horizontally and vertically).
+
 ## 4. If you had to offer the service as a production application, what stack/tools would you use.
 I would create separate microservices for each ETL stage:
 * __Extract:__ Lots of IO-bound work, so Node.js because of async execution model
@@ -95,3 +98,9 @@ $ pipenv install
 # Run ETL
 $ python3 etl/run.py
 ```
+
+__Possible question:__ _Why the heck this crazy guy needs temp tables?_
+
+__Possible answer:__ tldr: To make it horizontally scalable.
+
+This is dictated by a hack in [load.py](etl/load.py). Every instance needs it's own temp table to operate separately of other instances to not to deal with some possible sync and race condition problems. I decided to make the preparation part more complex to keep the ETL part simple. It is always about trade offs.
