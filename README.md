@@ -31,7 +31,7 @@
 ### Storage
 * A single PostgreSQL instance (in real life I'd do a replication/sharding depending on a load)
 * The indexes are for primary keys only (in real life it would depend on queries, in this case most probably: timestamp range)
-* Relation: Token.address == TokenTransfer.token_address _(see [create-scheme.sql](db/create-scheme.sql))_
+* Relation: Token.address == TokenTransfer.token_address _(see [create-schema.sql](db/create-schema.sql))_
 
 ## 3. Performance metrics
 I would measure:
